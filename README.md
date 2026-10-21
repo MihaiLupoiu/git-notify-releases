@@ -28,6 +28,25 @@ xattr -dr com.apple.quarantine /Applications/GitNotify.app
 
 The app isn't signed with an Apple Developer ID, so macOS refuses to open a downloaded copy until that quarantine flag is removed. Homebrew and the install script do this for you.
 
+If you installed by hand or with the script and want to switch to Homebrew, add `--force`, because Homebrew won't replace an app it didn't install:
+
+```sh
+brew install --cask --force mihailupoiu/tap/git-notify
+```
+
+## Update
+
+- Homebrew: `brew upgrade --cask git-notify`
+- Script: run the install command again.
+- By hand: quit GitNotify, then repeat the manual steps with the new zip.
+
+Your settings are kept.
+
+## Uninstall
+
+- Homebrew: `brew uninstall --cask git-notify`, or `brew uninstall --zap --cask git-notify` to also delete your settings.
+- Otherwise: quit GitNotify from its menu, then `rm -rf /Applications/GitNotify.app`. To also delete your settings: `rm -rf ~/.config/git-notify ~/Library/Application\ Support/git-notify`.
+
 ## Configure
 
 Settings are in the app (menu-bar icon › Settings…) and in `~/.config/git-notify/config.json`, which you can edit by hand. Set your GitHub organizations under **Watched Orgs**.
